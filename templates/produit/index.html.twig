@@ -1,0 +1,89 @@
+{% extends 'Template.html.twig' %}
+
+{% block title %}Hello UserCotrUController!{% endblock %}
+
+{% block body %}
+
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href=""{{ asset ('build/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href=""{{ asset ('build/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- /.card -->
+
+          <div class="card">
+             <div class="card-header">
+              <h3 class="card-title">Gestion Fournisseur</h3>
+            </div>
+             <div class="card-header">
+            <a href="{{ path('produit/add')}}">Ajouter</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Nom Produit</th>
+                  <th>Quantite</th>
+                  <th>Prix Unitaire</th>
+                  <th>Prix TTC</th>
+                  <th>TVA</th>
+                  <th>Nom Fournisseur</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>{%for produit in produits %}
+                <tr>
+                
+                  <td>{{produit.nom}}</td>
+                   <td>{{produit.quantite}}</td>
+                  <td>{{produit.prixunitaire}}
+                  </td>
+                  <td>{{produit.tva}}</td>
+                  <td>{{produit.prixttc}}</td>
+                 
+                <td>{{produit.fournisseur}}</td>
+                  <td><a href="{{ path('produit/update',{'id':produit.id})}}"class="btn btn-primary">Modifier</a></td>
+                
+                </tr>  {% endfor %}
+               
+             
+                </tbody>
+                <tfoot>
+                <tr>
+             <th>Nom Produit</th>
+                  <th>Quantite</th>
+                  <th>Prix Unitaire</th>
+                  <th>Prix TTC</th>
+                  <th>TVA</th>
+                  <th>Nom Fournisseur</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+          <script src="{{ asset ('build/plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset ('build/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- DataTables -->
+<script src="{{ asset ('build/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset ('build/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset ('build/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset ('build/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset ('build/dist/js/adminlte.min.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset ('build/dist/js/demo.js')}}"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  
+  });
+</script>
+{% endblock %}

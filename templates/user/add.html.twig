@@ -1,0 +1,38 @@
+{% extends 'Template.html.twig' %}
+
+{% block title %}Hello UserCotrUController!{% endblock %}
+{% form_theme formuser 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+ <!-- Input addon -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title"> {%if  editMode %} Modifier {% else %} Ajouter {% endif %}</h3>
+              </div>
+           
+              {{form_start(formuser)}}
+              
+          <!--    <div class="card-body">
+                
+                 <h4>Nom User</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_nom)}}
+                 
+                </div>--!>
+                 
+   
+
+                   <br>
+                  <div class="input-group">
+                  {%if  editMode %}  <button type="submit" class="btn btn-success">Modifier</button>
+                  {% else %}  
+                  <button type="submit" class="btn btn-success">Ajouter</button>
+                  {% endif %}
+             
+    
+            </div>
+{{form_end(formuser)}}
+             
+            </div>
+{% endblock %}

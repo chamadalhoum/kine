@@ -1,0 +1,45 @@
+{% extends 'Template.html.twig' %}
+
+{% block title %}Dossiermedicale index{% endblock %}
+
+{% block body %}
+    <h1>Dossiermedicale index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Medicaux</th>
+                <th>Chirurgie</th>
+                <th>Allergie</th>
+                <th>Document</th>
+                <th>Analyse</th>
+                <th>Radio</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dossiermedicale in dossiermedicales %}
+            <tr>
+                <td>{{ dossiermedicale.id }}</td>
+                <td>{{ dossiermedicale.medicaux }}</td>
+                <td>{{ dossiermedicale.chirurgie }}</td>
+                <td>{{ dossiermedicale.allergie }}</td>
+                <td>{{ dossiermedicale.document }}</td>
+                <td>{{ dossiermedicale.analyse }}</td>
+                <td>{{ dossiermedicale.radio }}</td>
+                <td>
+                    <a href="{{ path('dossiermedicale_show', {'id': dossiermedicale.id}) }}">show</a>
+                    <a href="{{ path('dossiermedicale_edit', {'id': dossiermedicale.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('dossiermedicale_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Dossiermedicale{% endblock %}
+
+{% block body %}
+    <h1>Create new Dossiermedicale</h1>
+
+    {{ include('dossiermedicale/_form.html.twig') }}
+
+    <a href="{{ path('dossiermedicale_index') }}">back to list</a>
+{% endblock %}

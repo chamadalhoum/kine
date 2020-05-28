@@ -1,0 +1,47 @@
+{% extends 'Template.html.twig' %}
+
+{% block title %}Hello UserCotrUController!{% endblock %}
+{% form_theme formprestation 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+ <!-- Input addon -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title"> {%if  editMode %} Modifier Prestation{% else %} Ajouter Prestation{% endif %}</h3>
+              </div>
+           
+              {{form_start(formprestation)}}
+              
+              <div class="card-body">
+                
+                 <h4>Nom Pathologie</h4>
+
+                <div class="input-group">
+                 {{form_widget(formprestation.nom_pathologie)}}
+                 
+                </div>
+                 
+   <h4>Prix Minimal</h4>
+
+                <div class="input-group">
+                 {{form_widget(formprestation.prix_min)}}
+                  
+                </div>   <br>
+                <h4>Prix Maximal</h4>
+
+                <div class="input-group">
+                 {{form_widget(formprestation.prix_max)}}
+                  
+                </div>   <br>
+                  <div class="input-group">
+                  {%if  editMode %}  <button type="submit" class="btn btn-success">Modifier</button>
+                  {% else %}  
+                  <button type="submit" class="btn btn-success">Ajouter</button>
+                  {% endif %}
+             
+    
+            </div>
+{{form_end(formprestation)}}
+             
+            </div>
+{% endblock %}

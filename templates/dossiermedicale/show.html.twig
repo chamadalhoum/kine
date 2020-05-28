@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dossiermedicale{% endblock %}
+
+{% block body %}
+    <h1>Dossiermedicale</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dossiermedicale.id }}</td>
+            </tr>
+            <tr>
+                <th>Medicaux</th>
+                <td>{{ dossiermedicale.medicaux }}</td>
+            </tr>
+            <tr>
+                <th>Chirurgie</th>
+                <td>{{ dossiermedicale.chirurgie }}</td>
+            </tr>
+            <tr>
+                <th>Allergie</th>
+                <td>{{ dossiermedicale.allergie }}</td>
+            </tr>
+            <tr>
+                <th>Document</th>
+                <td>{{ dossiermedicale.document }}</td>
+            </tr>
+            <tr>
+                <th>Analyse</th>
+                <td>{{ dossiermedicale.analyse }}</td>
+            </tr>
+            <tr>
+                <th>Radio</th>
+                <td>{{ dossiermedicale.radio }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('dossiermedicale_index') }}">back to list</a>
+
+    <a href="{{ path('dossiermedicale_edit', {'id': dossiermedicale.id}) }}">edit</a>
+
+    {{ include('dossiermedicale/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,97 @@
+
+{% block body %}
+    <a href="{{ path('rendezvous') }}">Create new booking</a>
+
+    {% include '@FullCalendar/Calendar/calendar.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css">
+{% endblock %}
+
+{% block javascripts %}
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/fr.js"></script>
+
+    <script type="text/javascript">
+
+    window.onload = () => {
+    let elementCalendrier = document.getElementById("calendar-holder")
+
+    let xmlhttp = new XMLHttpRequest()
+
+    xmlhttp.onreadystatechange = () => {
+        if(xmlhttp.readyState == 4){
+            if(xmlhttp.status == 200){
+                let evenements = JSON.parse(xmlhttp.responseText)
+
+                // On instancie le calendrier
+                let calendrier = new FullCalendar.Calendar(elementCalendrier, {
+                    // On appelle les composants
+                    plugins: ['dayGrid','timeGrid','list','interaction'],
+                    defaultView: 'timeGridWeek',
+                    locale: 'fr',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,list'
+                    },
+                    buttonText: {
+                        today: 'Aujourd\'hui',
+                        month: 'Mois',
+                        week: 'Semaine',
+                        list: 'Liste'
+                    },
+                    events: evenements,
+                    nowIndicator: true,
+                    editable: true,
+                    eventDrop: (infos) => {
+                        if(!confirm("Etes vous sûr.e de vouloir déplacer cet évènement")){
+                            infos.revert();
+                        }
+                    },
+                    eventResize: (infos) => {
+                        console.log(infos.event.end)
+                    }
+                })
+
+                calendrier.render()
+
+
+            }
+        }
+    }
+
+    xmlhttp.open('get', 'http://calendrier.test/liste.php', true)
+    xmlhttp.send(null)
+
+}
+        $(document).ready(function() {
+            $("#calendar-holder").fullCalendar({
+                eventSources: [
+                    {
+                        url: "{{ path('fullcalendar_load_events') }}",
+                        type: "POST",
+                        data: {
+                           
+                            filters: {},
+                        },
+                        error: function () {
+                            // alert("There was an error while fetching FullCalendar!");
+                        }
+                    }
+                ],
+                header: {
+                    center: "title",
+                    left: "prev,next today",
+                    right: "month,agendaWeek,agendaDay"
+                },
+                lazyFetching: true,
+                locale: "fr",
+                navLinks: true, // can click day/week names to navigate views
+            });
+        });
+    </script>
+{% endblock %}

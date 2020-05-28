@@ -1,0 +1,65 @@
+{% extends 'Template.html.twig' %}
+
+{% block title %}Hello UserCotrUController!{% endblock %}
+{% form_theme formproduit 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+ <!-- Input addon -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title"> {%if  editMode %} Modifier Produit{% else %} Ajouter Produit{% endif %}</h3>
+              </div>
+           
+              {{form_start(formproduit)}}
+              
+              <div class="card-body">
+                
+                 <h4>Nom</h4>
+
+                <div class="input-group">
+                 {{form_widget(formproduit.nom)}}
+                 
+                </div>
+                 <h4>Prix Unitaire</h4>
+
+                <div class="input-group">
+                 {{form_widget(formproduit.prix_unitaire)}}
+                 
+                </div>
+                <h4>Prix TTC</h4>
+
+                <div class="input-group">
+                 {{form_widget(formproduit.prix_ttc)}}
+                  
+                </div> 
+                 <h4>TVA</h4>
+
+                <div class="input-group">
+                 {{form_widget(formproduit.tva)}}
+                 
+                </div>
+                 
+   <h4>Quantite</h4>
+
+                <div class="input-group">
+                 {{form_widget(formproduit.quantite)}}
+                  
+                </div>   <br>
+                <h4>Fournisseur</h4>
+
+                <div class="input-group">
+                 {{form_widget(formproduit.fournisseur)}}
+                  
+                </div>   <br>
+                  <div class="input-group">
+                  {%if  editMode %}  <button type="submit" class="btn btn-success">Modifier</button>
+                  {% else %}  
+                  <button type="submit" class="btn btn-success">Ajouter</button>
+                  {% endif %}
+             
+    
+            </div>
+{{form_end(formproduit)}}
+             
+            </div>
+{% endblock %}

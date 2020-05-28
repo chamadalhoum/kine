@@ -1,0 +1,205 @@
+{% extends 'Template.html.twig' %}
+
+{% block title %}Hello PatientController!{% endblock %}
+
+{% block body %}
+  <!-- /.row -->
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-edit"></i>
+              Gestion Intervention
+            </h3>
+          </div>
+          <div class="card-body">
+            <h4>Vous pouvez consulter votre dossier en cliquant ici</h4>
+            <div class="row">
+              <div class="col-5 col-sm-3">
+                <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link active" id="vert-tabs-home-tab" data-toggle="pill" href="#vert-tabs-home" role="tab" aria-controls="vert-tabs-home" aria-selected="true"><i class="pink ace-icon fa fa-user bigger-110"></i> Home</a>
+                  <a class="nav-link" id="vert-tabs-profile-tab" data-toggle="pill" href="#vert-tabs-profile" role="tab" aria-controls="vert-tabs-profile" aria-selected="false"><i class="pink ace-icon fa fa-user bigger-110"></i> Profile</a>
+                  <a class="nav-link" id="vert-tabs-photos-tab" data-toggle="pill" href="#vert-tabs-photos" role="tab" aria-controls="vert-tabs-photos" aria-selected="false"><i class="pink ace-icon fa fa-camera bigger-110"></i> Photos</a>
+                  <a class="nav-link" id="vert-tabs-analyses-tab" data-toggle="pill" href="#vert-tabs-analyses" role="tab" aria-controls="vert-tabs-analyses" aria-selected="false"><i class="purple ace-icon fa fa-medkit bigger-110"></i> Analyses</a>
+                  <a class="nav-link" id="vert-tabs-radio-tab" data-toggle="pill" href="#vert-tabs-radio" role="tab" aria-controls="vert-tabs-radio" aria-selected="false"><i class="fa fa-broadcast-tower"></i> Radio</a>
+                  <a class="nav-link" id="vert-tabs-prestation-tab" data-toggle="pill" href="#vert-tabs-prestation" role="tab" aria-controls="vert-tabs-prestation" aria-selected="false"><i class="fas fa-user-cog"></i> Prestation</a>
+                  <a class="nav-link" id="vert-tabs-traitement-tab" data-toggle="pill" href="#vert-tabs-traitement" role="tab" aria-controls="vert-tabs-traitement" aria-selected="false"><i class="fas fa-hand-point-right"></i> Traitement</a>
+              
+              </div>
+              </div>
+              <div class="col-7 col-sm-9">
+                <div class="tab-content" id="vert-tabs-tabContent">
+                  <div class="tab-pane text-left fade show active" id="vert-tabs-home" role="tabpanel" aria-labelledby="vert-tabs-home-tab">
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin malesuada lacus ullamcorper dui molestie, sit amet congue quam finibus. Etiam ultricies nunc non magna feugiat commodo. Etiam odio magna, mollis auctor felis vitae, ullamcorper ornare ligula. Proin pellentesque tincidunt nisi, vitae ullamcorper felis aliquam id. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin id orci eu lectus blandit suscipit. Phasellus porta, ante et varius ornare, sem enim sollicitudin eros, at commodo leo est vitae lacus. Etiam ut porta sem. Proin porttitor porta nisl, id tempor risus rhoncus quis. In in quam a nibh cursus pulvinar non consequat neque. Mauris lacus elit, condimentum ac condimentum at, semper vitae lectus. Cras lacinia erat eget sapien porta consectetur. 
+                  </div>
+                  <div class="tab-pane fade" id="vert-tabs-profile" role="tabpanel" aria-labelledby="vert-tabs-profile-tab">
+                 <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title"> {%if  editMode %} Modifier Profil{% else %} Profil{% endif %}</h3>
+              </div>
+           
+              {{form_start(formuser)}}
+              
+            <div class="card-body">
+ <div class="col-sm-12">
+                <div class="col-sm-6">
+                 <h4>Nom User</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_nom)}}
+                 
+                </div>
+                  <h4>Nom Prénom</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_prenom)}}
+                 
+                </div>
+                <h4>Email</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_email)}}
+                 
+                </div>
+               
+                <h4>Télephone</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_tel)}}
+                 
+                </div>
+                <h4>Adresse</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_adresse)}}
+                 
+                </div>
+                 </div><div class="col-sm-6">
+                <h4>Mot de passe</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.password)}}
+                 
+                </div>
+                 <h4>Cin</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_cin)}}
+                 
+                </div>
+                <h4>Matricule Cnss</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_matriculecnss)}}
+                 
+                </div>
+                 <h4>User sex</h4>
+
+                <div class="input-group">
+               {{form_widget(formuser.user_sex)}}
+                 
+                </div>
+   
+</div></div></div>
+                   <br>
+                  <div class="input-group">
+                  {%if  editMode %}  <button type="submit" class="btn btn-success">Modifier</button>
+                  {% else %}  
+                  <button type="submit" class="btn btn-success">Ajouter</button>
+                  {% endif %}
+             
+    
+            </div>
+{{form_end(formuser)}}
+             
+            </div>
+             </div>
+                  <div class="tab-pane fade" id="vert-tabs-photos" role="tabpanel" aria-labelledby="vert-tabs-photos-tab">
+                  <div class="form-group">
+                   <input name="demande_listePhotos[]" type="file" class="col-xs-9 col-sm-9 demande_listePhotos " multiple="multiple" style="padding-top: 11px;"> 
+<input name="submit" type="submit" class="pull-right btn btn-small btn-primary" style="margin-left: 7px;" value="Go">
+
+
+
+                                                                                                </div>
+                 </div>
+                  <div class="tab-pane fade" id="vert-tabs-settings" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
+                <div class="form-group">
+                   <input name="demande_listePhotos[]" type="file" class="col-xs-9 col-sm-9 demande_listePhotos " multiple="multiple" style="padding-top: 11px;"> 
+<input name="submit" type="submit" class="pull-right btn btn-small btn-primary" style="margin-left: 7px;" value="Go">
+
+
+
+                                                                                                </div>  </div>
+                   <div class="tab-pane fade" id="vert-tabs-analyses" role="tabpanel" aria-labelledby="vert-tabs-analyses-tab">
+               <div class="form-group">
+                   <input name="demande_listePhotos[]" type="file" class="col-xs-9 col-sm-9 demande_listePhotos " multiple="multiple" style="padding-top: 11px;"> 
+<input name="submit" type="submit" class="pull-right btn btn-small btn-primary" style="margin-left: 7px;" value="Go">
+
+
+
+                                                                                                </div>   </div>
+                   <div class="tab-pane fade" id="vert-tabs-radio" role="tabpanel" aria-labelledby="vert-tabs-radio-tab">
+               <div class="form-group">
+                   <input name="demande_listePhotos[]" type="file" class="col-xs-12 col-sm-12 demande_listePhotos " multiple="multiple" style="padding-top: 11px;"> 
+<input name="submit" type="submit" class="pull-right btn btn-small btn-primary" style="margin-left: 7px;" value="Go">
+
+
+
+                                                                                                </div>   </div>
+                   <div class="tab-pane fade" id="vert-tabs-prestation" role="tabpanel" aria-labelledby="vert-tabs-prestation-tab">
+                <div class="card">
+             <div class="card-header">
+              <h3 class="card-title">Prestation</h3>
+            </div>
+             <div class="card-header">
+         
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Nom Patholoige</th>
+                  <th>Prix Minimal</th>
+                  <th>Prix Maximal</th>
+               
+                </tr>
+                </thead>
+                <tbody>{%for prestation in prestations %}
+                <tr>
+                
+                  <td>{{prestation.nompathologie}}</td>
+                  <td>{{prestation.prixmin}}
+                  </td>
+                  <td>{{prestation.prixmax}}</td>
+                
+           
+                
+                </tr>  {% endfor %}
+               
+             
+                </tbody>
+                <tfoot>
+                <tr>
+              <th>Nom Patholoige</th>
+                  <th>Prix Minimal</th>
+                  <th>Prix Maximal</th>
+                 
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+                   </div>
+                   <div class="tab-pane fade" id="vert-tabs-traitement" role="tabpanel" aria-labelledby="vert-tabs-traitement-tab">
+                     Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis tempus turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt venenatis vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a vestibulum pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget aliquet urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac habitasse platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis. 
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            
+          </div>
+          <!-- /.card -->
+        </div>
+{% endblock %}
